@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import MediaQuery from 'react-responsive';
-import './App.css';
 import Searchbar from './component/Searchbar';
 import GoogleMap from './component/GoogleMap';
 
@@ -16,11 +14,17 @@ class App extends Component {
       { name: 'Tudors', id: '51fbaa62498e81924e4457b2', location: {lat: 37.7752306, lng: 29.0840403} },
       { name: 'Çınar Square', id: '4cb0fb5af2dbef3b6aae79e5', location: {lat: 37.773514, lng: 29.0843873} }
     ],
-    filteredLocations: [],
+    filteredLocations: [
+      { name: 'Forum Camlik', id: '4cb0f956f2dbef3b34ad79e5', location: {lat: 37.753704, lng: 29.089688} },
+      { name: 'Teras Park', id: '4bee6aab2c082d7f7a683042', location: {lat: 37.760107, lng: 29.042707} },
+      { name: 'Sumer Park', id: '4dc6858e7d8b14fb46450658', location: {lat: 37.790684, lng: 29.088355} },
+      { name: 'Migros', id: '562a0c07498e4c9fb0377a49', location: {lat: 37.754617, lng: 29.053127} },
+      { name: 'Halikarnas', id: '4ee4ad9d77c8e893185625d0', location: {lat: 37.7726399, lng: 29.0849789} },
+      { name: 'Tudors', id: '51fbaa62498e81924e4457b2', location: {lat: 37.7752306, lng: 29.0840403} },
+      { name: 'Çınar Square', id: '4cb0fb5af2dbef3b6aae79e5', location: {lat: 37.773514, lng: 29.0843873} }
+    ],
     selectedLocation: ''
   }
-
-  this.state.filteredLocations = this.state.locations;
 
   selectLocation = (location) => {
     if (location.id === this.state.selectedLocation.id) {
@@ -51,7 +55,7 @@ class App extends Component {
       const map = document.querySelector('#map');
       map.classList.toggle('full');
   }
-  
+
   render() {
     return (
       <div className="App">
@@ -66,7 +70,7 @@ class App extends Component {
               <h1>Denizli Shopping Guide</h1>
             </div>
           </div>
-          <Map
+          <GoogleMap
             locations={this.state.locations}
             filteredLocations={this.state.filteredLocations}
             selectedLocation={this.state.selectedLocation}

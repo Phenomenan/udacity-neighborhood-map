@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import * as FoursquareAPI from './FoursquareAPI';
+import * as FoursquareAPI from './util/FoursquareAPI';
 
 class GoogleMap extends Component {
     state = {
