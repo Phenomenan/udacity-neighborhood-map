@@ -6,7 +6,7 @@ const Searchbar = (props) => {
     return (
         <div className='search-and-list'>
             <div>
-                <input type="text"
+                <input type="text" role="Search"
                     className='search-box'
                     placeholder='Restaurant Name'
                     aria-label='Search Restaurant'
@@ -17,7 +17,8 @@ const Searchbar = (props) => {
                     locs.map((location, index) => {
                         const isSelected = (location.id === selectedLocation.id ? 'row-selected' : '');
                         return (
-                            <li 
+                            <li
+                                role="Button"
                                 key={index}
                                 onClick={ () => selectLocation(location)}
                                 onKeyDown={(event) => event.keyCode !== 13 || selectLocation(location)}
