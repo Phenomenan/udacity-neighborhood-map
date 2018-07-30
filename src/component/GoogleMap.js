@@ -21,6 +21,10 @@ class GoogleMap extends Component {
         window.initMap = this.initMap;
     }
 
+    gm_authFailure() {
+      alert("Something went wrong. Please refresh the page.");
+    }
+
     initMap = () => {
         const mapWindow = new window.google.maps.Map(document.getElementById('map'), {
             center: { lat: this.props.home.lat, lng: this.props.home.lng },
@@ -81,16 +85,16 @@ class GoogleMap extends Component {
     };
 
     buildInfoWindowContent = (vDetails) => {
-        let content = '<div class="info-window" tabIndex="1">'
-        content += vDetails.name ? `<h3 tabIndex="1">${vDetails.name}</h3>` : '';
-        content += vDetails.categories[0].name ? `<h4 tabIndex="1">${vDetails.categories[0].name}</h4>` : '';
-        content += vDetails.description ? `<h5 tabIndex="1">${vDetails.description}</h5>` : '';
+        let content = '<div class="info-window" tabIndex="0">'
+        content += vDetails.name ? `<h3 tabIndex="0">${vDetails.name}</h3>` : '';
+        content += vDetails.categories[0].name ? `<h4 tabIndex="0">${vDetails.categories[0].name}</h4>` : '';
+        content += vDetails.description ? `<h5 tabIndex="0">${vDetails.description}</h5>` : '';
         content += vDetails.bestPhoto.prefix && vDetails.bestPhoto.suffix ? `<img src="${vDetails.bestPhoto.prefix}150x90${vDetails.bestPhoto.suffix}" alt="Restaurant Image" class="info-window-pic">` : '';
-        content += '<p><ul tabIndex="1" role="Contentinfo">'
-        content += vDetails.contact.formattedPhone && vDetails.hours.status ? `<li tabIndex="1">Phone: ${vDetails.contact.formattedPhone} ${vDetails.hours.status}</li>` : '';
-        content += vDetails.rating && vDetails.likes.summary ? `<li tabIndex="1" class="rating">Rating: ${vDetails.rating} with ${vDetails.likes.summary}</li>` : '';
-        content += vDetails.menu && vDetails.price.message ? `<li tabIndex="1"><a href="${vDetails.menu.url}">Menu</a> Price: ${vDetails.price.message}</li>` : '';
-        content += vDetails.canonicalUrl && vDetails.url ? `<li tabIndex="1"><a href="${vDetails.canonicalUrl}">Open on Foursquare</a>, <a href="${vDetails.url}>Home Page</a></li>` : '';
+        content += '<p><ul tabIndex="0" role="Contentinfo">'
+        content += vDetails.contact.formattedPhone && vDetails.hours.status ? `<li tabIndex="0">Phone: ${vDetails.contact.formattedPhone} ${vDetails.hours.status}</li>` : '';
+        content += vDetails.rating && vDetails.likes.summary ? `<li tabIndex="0" class="rating">Rating: ${vDetails.rating} with ${vDetails.likes.summary}</li>` : '';
+        content += vDetails.menu && vDetails.price.message ? `<li tabIndex="0"><a href="${vDetails.menu.url}">Menu</a> Price: ${vDetails.price.message}</li>` : '';
+        content += vDetails.canonicalUrl && vDetails.url ? `<li tabIndex="0"><a href="${vDetails.canonicalUrl}">Open on Foursquare</a>, <a href="${vDetails.url}>Home Page</a></li>` : '';
         content += '</p></ul></div>'
         return content;
     };
